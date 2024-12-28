@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <strong>${release.name}</strong>
                         <p>${release.body}</p>
                     </div>
-                    <a href="${release.html_url}" class="btn btn-primary btn-sm" target="_blank">View Release</a>
+                    <a href="${release.browser_download_url}" class="btn btn-primary btn-sm" download>Download Release</a>
+                    <a href="${release.html_url}" class="btn btn-secondary btn-sm" target="_blank">View Release</a>
                 `;
                 releasesContainer.appendChild(releaseItem);
             });
