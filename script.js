@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <strong>${release.name}</strong>
                         <p>${release.body}</p>
                     </div>
-                    <a href="${release.zipball_url}" class="btn btn-primary btn-sm">Download ZIP</a>
+                    <a href="${release.html_url}" class="btn btn-primary btn-sm" target="_blank">View Release</a>
                 `;
                 releasesContainer.appendChild(releaseItem);
             });
