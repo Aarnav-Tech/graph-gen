@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 releaseItem.innerHTML = `
                     <div>
                         <strong>${release.name}</strong>
-                        <p>${release.body}</p>
+                        <div>${marked(release.body)}</div>
                     </div>
                 `;
 
