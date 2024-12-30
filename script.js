@@ -12,9 +12,31 @@ document.addEventListener('DOMContentLoaded', function() {
                         <strong>${release.name}</strong>
                         <p>${release.body}</p>
                     </div>
-                    <a href="${release.browser_download_url}" class="btn btn-primary btn-sm" download>Download Release</a>
-                    <a href="${release.html_url}" class="btn btn-secondary btn-sm" target="_blank">View Release</a>
                 `;
+
+                // Check if there are assets to download
+                if (release.assets.length > 0) {
+                    release.assets.forEach(asset => {
+                        const downloadButton = document.createElement('a');
+                        downloadButton.href = asset.browser_download_url;
+                        downloadButton.className = 'btn btn-primary btn-sm';
+                        downloadButton.download = asset.name; // Set the download attribute to the asset name
+                        downloadButton.textContent = `Download ${asset.name}`;
+                        releaseItem.appendChild(downloadButton);
+                    });
+                } else {
+                    const noAssetsMessage = document.createElement('p');
+                    noAssetsMessage.textContent = 'No downloadable assets available.';
+                    releaseItem.appendChild(noAssetsMessage);
+                }
+
+                const viewButton = document.createElement('a');
+                viewButton.href = release.html_url;
+                viewButton.className = 'btn btn-secondary btn-sm';
+                viewButton.target = '_blank';
+                viewButton.textContent = 'View Release';
+                releaseItem.appendChild(viewButton);
+
                 releasesContainer.appendChild(releaseItem);
             });
         })
